@@ -1,4 +1,5 @@
-//require('dotenv').config();
+require('dotenv').config();
+
 const key = process.env.REACT_APP_PINATA_KEY;
 const secret = process.env.REACT_APP_PINATA_SECRET;
 
@@ -27,8 +28,7 @@ export const uploadJSONToIPFS = async(JSONBody) => {
                 success: false,
                 message: error.message,
             }
-
-    });
+        });
 };
 
 export const uploadFileToIPFS = async(file) => {
