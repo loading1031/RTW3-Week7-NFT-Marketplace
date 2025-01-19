@@ -1,6 +1,5 @@
 import Navbar from "./Navbar";
-import axie from "../tile.jpeg";
-import { useLocation, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
 import { useState } from "react";
@@ -99,7 +98,7 @@ export default function NFTPage (props) {
                         Seller: <span className="text-sm">{data.seller}</span>
                     </div>
                     <div>
-                    { currAddress != data.owner && currAddress != data.seller ?
+                    { currAddress !== data.owner && currAddress !== data.seller ?
                         <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={() => buyNFT(tokenId)}>Buy this NFT</button>
                         : <div className="text-emerald-700">You are the owner of this NFT</div>
                     }

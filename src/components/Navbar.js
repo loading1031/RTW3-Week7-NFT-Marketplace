@@ -1,12 +1,6 @@
-import logo from '../logo_3.png';
 import fullLogo from '../full_logo.png';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
@@ -55,7 +49,7 @@ function Navbar() {
   }
   
     useEffect(() => {
-      if(window.ethereum == undefined)
+      if(window.ethereum === undefined)
         return;
       let val = window.ethereum.isConnected();
       if(val)
@@ -69,7 +63,7 @@ function Navbar() {
       window.ethereum.on('accountsChanged', function(accounts){
         window.location.replace(location.pathname)
       })
-    });
+    }, [location.pathname]);
 
     return (
       <div className="">
@@ -115,7 +109,6 @@ function Navbar() {
               <li>
                 <button 
                 className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm"
-                className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" 
                 onClick={connectWebsite} // connectWebsite 함수 연결
                 >
                   {connected? "Connected":"Connect Wallet"}
